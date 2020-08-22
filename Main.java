@@ -189,7 +189,7 @@ public class Main {
 				
 				//Instructions for user
 				JLabel TitleLabel=new JLabel("How would you like to search?");
-				TitleLabel.setBounds(20,10,250,30); 
+				TitleLabel.setBounds(20,5,250,30); 
 				
 				//The following are radio buttons to choose how the search will be performed
 				JRadioButton FirstName = new JRadioButton("First name");
@@ -266,15 +266,15 @@ public class Main {
 		DisplayContact.setBounds(55,130,300,30);
 		DisplayContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				JFrame displayChoice = new JFrame();
+				JFrame displayChoice = new JFrame("Display");
 				displayChoice.setSize(300,300);
 				displayChoice.setLayout(null);
 				displayChoice.setVisible(true);
 				displayChoice.setDefaultCloseOperation(displayChoice.DISPOSE_ON_CLOSE);
 				
 				//Instructions for user
-				JLabel TitleLabel=new JLabel("How would you like to search?");
-				TitleLabel.setBounds(20,10,250,30); 
+				JLabel TitleLabel=new JLabel("How would you like to display by");
+				TitleLabel.setBounds(20,5,250,30); 
 				
 				//The following are radio buttons to choose how the search will be performed
 				JRadioButton FirstName = new JRadioButton("First name");
@@ -318,7 +318,8 @@ public class Main {
 					public void actionPerformed(ActionEvent e){
 						displayChoice.dispose();
 					}
-				});	
+				});
+					
 				//Add all features to the window(Jframe)
 				displayChoice.add(FirstName);	
 				displayChoice.add(LastName);
