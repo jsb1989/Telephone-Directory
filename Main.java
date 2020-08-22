@@ -38,7 +38,7 @@ public class Main {
 			}
 		});
 		
-		//
+		//Shows possible contacts
 		JButton PossibleContact=new JButton("Possible Contacts");  
 		PossibleContact.setBounds(215,95,200,30);
 		PossibleContact.addActionListener(new ActionListener(){
@@ -48,6 +48,7 @@ public class Main {
 			}
 		});
 		
+		//Displays all contacts which will be sorted and displayed as requested by user
 		JButton DisplayContact=new JButton("Display all contacts sorted by");  
 		DisplayContact.setBounds(55,130,300,30);
 		DisplayContact.addActionListener(new ActionListener(){
