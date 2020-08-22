@@ -9,7 +9,11 @@ public class Main {
 	public static void main(String[] args) { 
 		//Title of the menu window 
 		JFrame menu=new JFrame("Phone Directory");
-		   
+		
+		/*
+			Creation of Data structure to store contacts goes here
+		*/
+		
 		//Adds contact to directory   
 		JButton AddContact=new JButton("Add Contact");  
 		AddContact.setBounds(10,60,200,30); 
@@ -57,7 +61,14 @@ public class Main {
 				ACSubmit.setBounds(10,200,200,30);
 				ACSubmit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
+					
+						/*
+							Add Contact Function goes here
+							This will take the string from each text field and pass it into the function
+							which will add the information to the data structure
+						*/
 						
+						addcontactmenu.dispose();
 					}
 				});
 				
@@ -89,8 +100,76 @@ public class Main {
 		DeleteContact.setBounds(215,60,200,30);
 		DeleteContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//The printf is just a place holder until the function to delete has been created
-				System.out.printf("Delete\n");
+				JFrame deletecontactmenu=new JFrame("Delete Contact");
+				deletecontactmenu.setSize(450,600);  
+				deletecontactmenu.setLayout(null);
+				deletecontactmenu.setVisible(true);
+				deletecontactmenu.setDefaultCloseOperation(deletecontactmenu.DISPOSE_ON_CLOSE);
+				
+				//Just shows the instruction at the top of the window
+				JLabel ACMTitleLabel=new JLabel("Input information for the contact that will be deleted");
+				ACMTitleLabel.setBounds(20,10,400,30); 
+				
+				//Label for the text field to enter the contacts first name
+				JLabel firstNameLabel=new JLabel("First Name:");
+				firstNameLabel.setBounds(10,60,200,30);
+				JTextField firstNameText=new JTextField();
+				firstNameText.setBounds(115,60,300,30);
+				
+				//Label for the text field to enter the contacts last name
+				JLabel lastNameLabel=new JLabel("Last Name:");
+				lastNameLabel.setBounds(10,95,200,30);
+				JTextField lastNameText=new JTextField();
+				lastNameText.setBounds(115,95,300,30);
+				
+				//Label for the text field to enter the contacts phone number
+				JLabel phoneNumberLabel=new JLabel("Phone Number:");
+				phoneNumberLabel.setBounds(10,130,200,30);
+				JTextField phoneNumberText=new JTextField();
+				phoneNumberText.setBounds(125,130,290,30);
+				
+				//Label for the text field to enter the contacts school or workplace
+				JLabel workSchoolLabel=new JLabel("Work or School:");
+				workSchoolLabel.setBounds(10,165,200,30);
+				JTextField workSchoolText=new JTextField();
+				workSchoolText.setBounds(130,165,285,30);
+				//Submit button to process delete action
+				JButton Submit=new JButton("Submit");
+				Submit.setBounds(10,200,200,30);
+				Submit.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+					
+						/*
+							Depending on the selected information it will delete the
+							corresponding contact by passing the information to
+							the delete function
+						*/
+						
+						deletecontactmenu.dispose();
+					}
+				});
+				
+				//Cancel just in case user changes mind
+				JButton Cancel=new JButton("Cancel");
+				Cancel.setBounds(215,200,200,30);
+				Cancel.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						deletecontactmenu.dispose();
+					}
+				});
+				
+				//Adding the buttons and fields to the Frame(window)
+				deletecontactmenu.add(ACMTitleLabel);
+				deletecontactmenu.add(firstNameLabel);
+				deletecontactmenu.add(firstNameText);
+				deletecontactmenu.add(lastNameLabel);
+				deletecontactmenu.add(lastNameText);
+				deletecontactmenu.add(phoneNumberLabel);
+				deletecontactmenu.add(phoneNumberText);
+				deletecontactmenu.add(workSchoolLabel);
+				deletecontactmenu.add(workSchoolText);
+				deletecontactmenu.add(Submit);
+				deletecontactmenu.add(Cancel);
 			}
 		});
 		
