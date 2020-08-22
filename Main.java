@@ -64,7 +64,11 @@ public class Main {
 				ACSubmit.setBounds(10,200,200,30);
 				ACSubmit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-					
+					//Once the submit button is clicked it will save the info from each field to a string
+						String First_Name=firstNameText.getText();
+						String Last_Name=lastNameText.getText();
+						String Phone_Num=phoneNumberText.getText();
+						String Work_School=workSchoolText.getText();
 						/*
 							Add Contact Function goes here
 							This will take the string from each text field and pass it into the function
@@ -140,7 +144,11 @@ public class Main {
 				Submit.setBounds(10,200,200,30);
 				Submit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-					
+						//Once the submit button is clicked it will save the info from each field to a string
+						String First_Name=firstNameText.getText();
+						String Last_Name=lastNameText.getText();
+						String Phone_Num=phoneNumberText.getText();
+						String Work_School=workSchoolText.getText();
 						/*
 							Depending on the selected information it will delete the
 							corresponding contact by passing the information to
