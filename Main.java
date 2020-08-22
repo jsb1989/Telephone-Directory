@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,8 +15,23 @@ public class Main {
 		AddContact.setBounds(10,60,200,30); 
 		AddContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//The printf is just a place holder until the function to add has been created
-				System.out.printf("Add\n");
+				//Creates new window which will have fields to add information for new contact
+				JFrame addcontactmenu=new JFrame("Add Contact");
+				addcontactmenu.setSize(450,600);  
+				addcontactmenu.setLayout(null);
+				addcontactmenu.setVisible(true); 
+				addcontactmenu.setDefaultCloseOperation(addcontactmenu.EXIT_ON_CLOSE); 
+				JTextField firstNameText,lastNameText,phoneNumberText;
+				JLabel firstNameLabel,lastNameLabel,phoneNumberLabel;
+				firstNameLabel=new Jlabel("First Name:");
+				
+				lastNameLabel=new Jlabel("Last Name:");
+				
+				phoneNumberLabel=new Jlabel("Phone Number:");
+				
+				JButton ACSubmit=new JButton("Submit");
+				
+				JButton ACCancel=new JButton("Cancel");
 			}
 		});
 		
@@ -66,6 +83,6 @@ public class Main {
 		menu.setSize(450,600);  
 		menu.setLayout(null);
 		menu.setVisible(true); 
-		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
+		menu.setDefaultCloseOperation(menu.EXIT_ON_CLOSE);     
 	}  
 }
