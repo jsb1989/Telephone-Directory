@@ -20,18 +20,57 @@ public class Main {
 				addcontactmenu.setSize(450,600);  
 				addcontactmenu.setLayout(null);
 				addcontactmenu.setVisible(true); 
-				addcontactmenu.setDefaultCloseOperation(addcontactmenu.EXIT_ON_CLOSE); 
-				JTextField firstNameText,lastNameText,phoneNumberText;
-				JLabel firstNameLabel,lastNameLabel,phoneNumberLabel;
-				firstNameLabel=new Jlabel("First Name:");
+				//When the window is closed it will just close this window not the main one
+				addcontactmenu.setDefaultCloseOperation(addcontactmenu.DISPOSE_ON_CLOSE);
 				
-				lastNameLabel=new Jlabel("Last Name:");
+				//Just shows the instruction at the top of the window
+				JLabel ACMTitleLabel=new JLabel("Please add information for new contact");
+				ACMTitleLabel.setBounds(90,10,350,30); 
 				
-				phoneNumberLabel=new Jlabel("Phone Number:");
+				//JTextField firstNameText,lastNameText,phoneNumberText;
 				
+				//Label for the text field to enter the contacts first name
+				JLabel firstNameLabel=new JLabel("First Name:");
+				firstNameLabel.setBounds(10,60,200,30);
+				
+				//Label for the text field to enter the contacts last name
+				JLabel lastNameLabel=new JLabel("Last Name:");
+				lastNameLabel.setBounds(10,95,200,30);
+				
+				//Label for the text field to enter the contacts phone number
+				JLabel phoneNumberLabel=new JLabel("Phone Number:");
+				phoneNumberLabel.setBounds(10,125,200,30);
+				
+				//Label for the text field to enter the contacts school or workplace
+				JLabel workSchoolLabel=new JLabel("Work or School:");
+				workSchoolLabel.setBounds(10,155,200,30);
+				
+				// When user clicks submit all the information put in each text field 
+				// will be saved to the data structure storing contact information
 				JButton ACSubmit=new JButton("Submit");
+				ACSubmit.setBounds(10,195,200,30);
+				ACSubmit.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						
+					}
+				});
 				
+				//If user clicks the cancel button it will close this window and just show the main menu
 				JButton ACCancel=new JButton("Cancel");
+				ACCancel.setBounds(215,195,200,30);
+				ACCancel.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						addcontactmenu.dispose();
+					}
+				});
+				
+				addcontactmenu.add(ACMTitleLabel);
+				addcontactmenu.add(firstNameLabel);
+				addcontactmenu.add(lastNameLabel);
+				addcontactmenu.add(phoneNumberLabel);
+				addcontactmenu.add(workSchoolLabel);
+				addcontactmenu.add(ACSubmit);
+				addcontactmenu.add(ACCancel);
 			}
 		});
 		
