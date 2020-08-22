@@ -2,6 +2,9 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,7 +12,7 @@ public class Main {
 	public static void main(String[] args) { 
 		//Title of the menu window 
 		JFrame menu=new JFrame("Phone Directory");
-		
+		menu.setVisible(true); 
 		/*
 			Creation of Data structure to store contacts goes here
 		*/
@@ -67,7 +70,6 @@ public class Main {
 							This will take the string from each text field and pass it into the function
 							which will add the information to the data structure
 						*/
-						
 						addcontactmenu.dispose();
 					}
 				});
@@ -144,7 +146,7 @@ public class Main {
 							corresponding contact by passing the information to
 							the delete function
 						*/
-						
+						menu.setVisible(true);
 						deletecontactmenu.dispose();
 					}
 				});
@@ -154,6 +156,7 @@ public class Main {
 				Cancel.setBounds(215,200,200,30);
 				Cancel.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
+						menu.setVisible(true);
 						deletecontactmenu.dispose();
 					}
 				});
@@ -178,8 +181,68 @@ public class Main {
 		SearchContact.setBounds(10,95,200,30); 
 		SearchContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//The printf is just a place holder until the function to search has been created
-				System.out.printf("Search\n");
+				JFrame chooseContact = new JFrame();
+				chooseContact.setSize(300,300);
+				chooseContact.setLayout(null);
+				chooseContact.setVisible(true);
+				chooseContact.setDefaultCloseOperation(chooseContact.DISPOSE_ON_CLOSE);
+				
+				//Instructions for user
+				JLabel TitleLabel=new JLabel("How would you like to search?");
+				TitleLabel.setBounds(20,10,250,30); 
+				
+				//The following are radio buttons to choose how the search will be performed
+				JRadioButton FirstName = new JRadioButton("First name");
+				FirstName.setBounds(10,30,150,30);
+				
+				JRadioButton LastName = new JRadioButton("Last name");
+				LastName.setBounds(10,60,150,30);
+				
+				JRadioButton PhoneNumber = new JRadioButton("Phone Number");
+				PhoneNumber.setBounds(10,90,150,30);
+				
+				JRadioButton WorkSchool = new JRadioButton("Work or School");
+				WorkSchool.setBounds(10,120,150,30);
+				
+				//Groups the buttons together
+				ButtonGroup group = new ButtonGroup();
+					group.add(FirstName);
+					group.add(LastName);
+					group.add(PhoneNumber);
+					group.add(WorkSchool);
+					
+				//Submit button to process search choice
+				JButton Submit=new JButton("Submit");
+				Submit.setBounds(10,160,200,30);
+				Submit.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+					
+						/*
+							Depending on the selected information it will search the
+							the data strut by passing the information to
+							the search function
+						*/
+						
+						chooseContact.dispose();
+					}
+				});
+				
+				//Cancel just in case user changes mind
+				JButton Cancel=new JButton("Cancel");
+				Cancel.setBounds(10,200,200,30);
+				Cancel.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						chooseContact.dispose();
+					}
+				});	
+				//Add all features to the window(Jframe)
+				chooseContact.add(FirstName);	
+				chooseContact.add(LastName);
+				chooseContact.add(PhoneNumber);
+				chooseContact.add(WorkSchool);
+				chooseContact.add(TitleLabel);
+				chooseContact.add(Submit);
+				chooseContact.add(Cancel);
 			}
 		});
 		
@@ -188,7 +251,12 @@ public class Main {
 		PossibleContact.setBounds(215,95,200,30);
 		PossibleContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//The printf is just a place holder until the function to show possible contacts has been created
+				/*
+					When this button is selected it will
+					show potential contacts the user may know
+					based on work place or school
+					This will open a new window up displaying the information
+				*/
 				System.out.printf("Poss\n");
 			}
 		});
@@ -198,8 +266,67 @@ public class Main {
 		DisplayContact.setBounds(55,130,300,30);
 		DisplayContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//The printf is just a place holder until the function to display and sort has been created
-				System.out.printf("Dis\n");
+				JFrame displayChoice = new JFrame();
+				displayChoice.setSize(300,300);
+				displayChoice.setLayout(null);
+				displayChoice.setVisible(true);
+				displayChoice.setDefaultCloseOperation(displayChoice.DISPOSE_ON_CLOSE);
+				
+				//Instructions for user
+				JLabel TitleLabel=new JLabel("How would you like to search?");
+				TitleLabel.setBounds(20,10,250,30); 
+				
+				//The following are radio buttons to choose how the search will be performed
+				JRadioButton FirstName = new JRadioButton("First name");
+				FirstName.setBounds(10,30,150,30);
+				
+				JRadioButton LastName = new JRadioButton("Last name");
+				LastName.setBounds(10,60,150,30);
+				
+				JRadioButton PhoneNumber = new JRadioButton("Phone Number");
+				PhoneNumber.setBounds(10,90,150,30);
+				
+				JRadioButton WorkSchool = new JRadioButton("Work or School");
+				WorkSchool.setBounds(10,120,150,30);
+				
+				//Groups the buttons together
+				ButtonGroup group = new ButtonGroup();
+					group.add(FirstName);
+					group.add(LastName);
+					group.add(PhoneNumber);
+					group.add(WorkSchool);
+					
+				//Submit button to process search choice
+				JButton Submit=new JButton("Submit");
+				Submit.setBounds(10,160,200,30);
+				Submit.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+					
+						/*
+							Depending on the selected information it will sort the data structure
+							then display the contents based on that.
+						*/
+						
+						displayChoice.dispose();
+					}
+				});
+				
+				//Cancel just in case user changes mind
+				JButton Cancel=new JButton("Cancel");
+				Cancel.setBounds(10,200,200,30);
+				Cancel.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						displayChoice.dispose();
+					}
+				});	
+				//Add all features to the window(Jframe)
+				displayChoice.add(FirstName);	
+				displayChoice.add(LastName);
+				displayChoice.add(PhoneNumber);
+				displayChoice.add(WorkSchool);
+				displayChoice.add(TitleLabel);
+				displayChoice.add(Submit);
+				displayChoice.add(Cancel);
 			}
 		});
 		
