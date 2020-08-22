@@ -27,28 +27,34 @@ public class Main {
 				JLabel ACMTitleLabel=new JLabel("Please add information for new contact");
 				ACMTitleLabel.setBounds(90,10,350,30); 
 				
-				//JTextField firstNameText,lastNameText,phoneNumberText;
-				
 				//Label for the text field to enter the contacts first name
 				JLabel firstNameLabel=new JLabel("First Name:");
 				firstNameLabel.setBounds(10,60,200,30);
+				JTextField firstNameText=new JTextField();
+				firstNameText.setBounds(115,60,300,30);
 				
 				//Label for the text field to enter the contacts last name
 				JLabel lastNameLabel=new JLabel("Last Name:");
 				lastNameLabel.setBounds(10,95,200,30);
+				JTextField lastNameText=new JTextField();
+				lastNameText.setBounds(115,95,300,30);
 				
 				//Label for the text field to enter the contacts phone number
 				JLabel phoneNumberLabel=new JLabel("Phone Number:");
-				phoneNumberLabel.setBounds(10,125,200,30);
+				phoneNumberLabel.setBounds(10,130,200,30);
+				JTextField phoneNumberText=new JTextField();
+				phoneNumberText.setBounds(125,130,290,30);
 				
 				//Label for the text field to enter the contacts school or workplace
 				JLabel workSchoolLabel=new JLabel("Work or School:");
-				workSchoolLabel.setBounds(10,155,200,30);
+				workSchoolLabel.setBounds(10,165,200,30);
+				JTextField workSchoolText=new JTextField();
+				workSchoolText.setBounds(130,165,285,30);
 				
 				// When user clicks submit all the information put in each text field 
 				// will be saved to the data structure storing contact information
 				JButton ACSubmit=new JButton("Submit");
-				ACSubmit.setBounds(10,195,200,30);
+				ACSubmit.setBounds(10,200,200,30);
 				ACSubmit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						
@@ -57,7 +63,7 @@ public class Main {
 				
 				//If user clicks the cancel button it will close this window and just show the main menu
 				JButton ACCancel=new JButton("Cancel");
-				ACCancel.setBounds(215,195,200,30);
+				ACCancel.setBounds(215,200,200,30);
 				ACCancel.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						addcontactmenu.dispose();
@@ -66,9 +72,13 @@ public class Main {
 				
 				addcontactmenu.add(ACMTitleLabel);
 				addcontactmenu.add(firstNameLabel);
+				addcontactmenu.add(firstNameText);
 				addcontactmenu.add(lastNameLabel);
+				addcontactmenu.add(lastNameText);
 				addcontactmenu.add(phoneNumberLabel);
+				addcontactmenu.add(phoneNumberText);
 				addcontactmenu.add(workSchoolLabel);
+				addcontactmenu.add(workSchoolText);
 				addcontactmenu.add(ACSubmit);
 				addcontactmenu.add(ACCancel);
 			}
