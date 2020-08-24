@@ -13,6 +13,7 @@ public class Main {
 		//Title of the menu window 
 		JFrame menu=new JFrame("Phone Directory");
 		menu.setVisible(true); 
+		
 		/*
 			Creation of Data structure to store contacts goes here
 		*/
@@ -208,7 +209,7 @@ public class Main {
 		SearchContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				JFrame chooseContact = new JFrame();
-				chooseContact.setSize(300,300);
+				chooseContact.setSize(300,325);
 				chooseContact.setLayout(null);
 				chooseContact.setVisible(true);
 				chooseContact.setDefaultCloseOperation(chooseContact.DISPOSE_ON_CLOSE);
@@ -227,8 +228,11 @@ public class Main {
 				JRadioButton PhoneNumber = new JRadioButton("Phone Number");
 				PhoneNumber.setBounds(10,90,150,30);
 				
+				JRadioButton Email = new JRadioButton("Email");
+				Email.setBounds(10,120,150,30);
+				
 				JRadioButton WorkSchool = new JRadioButton("Work or School");
-				WorkSchool.setBounds(10,120,150,30);
+				WorkSchool.setBounds(10,150,150,30);
 				
 				//Groups the buttons together
 				ButtonGroup group = new ButtonGroup();
@@ -239,10 +243,19 @@ public class Main {
 					
 				//Submit button to process search choice
 				JButton Submit=new JButton("Submit");
-				Submit.setBounds(10,160,200,30);
+				Submit.setBounds(10,190,200,30);
 				Submit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-					
+						if(FirstName.isSelected()){
+						}
+						if(LastName.isSelected()){
+						}
+						if(PhoneNumber.isSelected()){
+						}
+						if(Email.isSelected()){
+						}
+						if(WorkSchool.isSelected()){
+						}
 						/*
 							Depending on the selected information it will search the
 							the data strut by passing the information to
@@ -255,7 +268,7 @@ public class Main {
 				
 				//Cancel just in case user changes mind
 				JButton Cancel=new JButton("Cancel");
-				Cancel.setBounds(10,200,200,30);
+				Cancel.setBounds(10,240,200,30);
 				Cancel.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						chooseContact.dispose();
@@ -265,6 +278,7 @@ public class Main {
 				chooseContact.add(FirstName);	
 				chooseContact.add(LastName);
 				chooseContact.add(PhoneNumber);
+				chooseContact.add(Email);
 				chooseContact.add(WorkSchool);
 				chooseContact.add(TitleLabel);
 				chooseContact.add(Submit);
@@ -293,7 +307,7 @@ public class Main {
 		DisplayContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				JFrame displayChoice = new JFrame("Display");
-				displayChoice.setSize(300,300);
+				displayChoice.setSize(300,325);
 				displayChoice.setLayout(null);
 				displayChoice.setVisible(true);
 				displayChoice.setDefaultCloseOperation(displayChoice.DISPOSE_ON_CLOSE);
@@ -302,7 +316,7 @@ public class Main {
 				JLabel TitleLabel=new JLabel("How would you like to display by");
 				TitleLabel.setBounds(20,5,250,30); 
 				
-				//The following are radio buttons to choose how the search will be performed
+				//The following are radio buttons to choose how the sorting will be performed
 				JRadioButton FirstName = new JRadioButton("First name");
 				FirstName.setBounds(10,30,150,30);
 				
@@ -312,8 +326,11 @@ public class Main {
 				JRadioButton PhoneNumber = new JRadioButton("Phone Number");
 				PhoneNumber.setBounds(10,90,150,30);
 				
+				JRadioButton Email = new JRadioButton("Email");
+				Email.setBounds(10,120,150,30);
+				
 				JRadioButton WorkSchool = new JRadioButton("Work or School");
-				WorkSchool.setBounds(10,120,150,30);
+				WorkSchool.setBounds(10,150,150,30);
 				
 				//Groups the buttons together
 				ButtonGroup group = new ButtonGroup();
@@ -322,12 +339,21 @@ public class Main {
 					group.add(PhoneNumber);
 					group.add(WorkSchool);
 					
-				//Submit button to process search choice
+				//Submit button to process sorting choice
 				JButton Submit=new JButton("Submit");
-				Submit.setBounds(10,160,200,30);
+				Submit.setBounds(10,190,200,30);
 				Submit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-					
+						if(FirstName.isSelected()){
+						}
+						if(LastName.isSelected()){
+						}
+						if(PhoneNumber.isSelected()){
+						}
+						if(Email.isSelected()){
+						}
+						if(WorkSchool.isSelected()){
+						}
 						/*
 							Depending on the selected information it will sort the data structure
 							then display the contents based on that.
@@ -339,7 +365,7 @@ public class Main {
 				
 				//Cancel just in case user changes mind
 				JButton Cancel=new JButton("Cancel");
-				Cancel.setBounds(10,200,200,30);
+				Cancel.setBounds(10,240,200,30);
 				Cancel.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						displayChoice.dispose();
@@ -350,6 +376,7 @@ public class Main {
 				displayChoice.add(FirstName);	
 				displayChoice.add(LastName);
 				displayChoice.add(PhoneNumber);
+				displayChoice.add(Email);
 				displayChoice.add(WorkSchool);
 				displayChoice.add(TitleLabel);
 				displayChoice.add(Submit);
