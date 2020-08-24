@@ -34,6 +34,7 @@ public class Main {
 				addcontactmenu.setSize(450,600);  
 				addcontactmenu.setLayout(null);
 				addcontactmenu.setVisible(true); 
+				addcontactmenu.setLocationRelativeTo(null);
 				//When the window is closed it will just close this window not the main one
 				addcontactmenu.setDefaultCloseOperation(addcontactmenu.DISPOSE_ON_CLOSE);
 				
@@ -126,6 +127,7 @@ public class Main {
 				deletecontactmenu.setSize(450,600);  
 				deletecontactmenu.setLayout(null);
 				deletecontactmenu.setVisible(true);
+				deletecontactmenu.setLocationRelativeTo(null);
 				deletecontactmenu.setDefaultCloseOperation(deletecontactmenu.DISPOSE_ON_CLOSE);
 				
 				//Just shows the instruction at the top of the window
@@ -218,6 +220,7 @@ public class Main {
 				chooseContact.setSize(300,325);
 				chooseContact.setLayout(null);
 				chooseContact.setVisible(true);
+				chooseContact.setLocationRelativeTo(null);
 				chooseContact.setDefaultCloseOperation(chooseContact.DISPOSE_ON_CLOSE);
 				
 				//Instructions for user
@@ -330,6 +333,7 @@ public class Main {
 				displayChoice.setSize(300,325);
 				displayChoice.setLayout(null);
 				displayChoice.setVisible(true);
+				displayChoice.setLocationRelativeTo(null);
 				displayChoice.setDefaultCloseOperation(displayChoice.DISPOSE_ON_CLOSE);
 				
 				//Instructions for user
@@ -416,9 +420,10 @@ public class Main {
 		menu.add(SearchContact);
 		menu.add(PossibleContact);
 		menu.add(DisplayContact);
-		menu.setSize(425,215);  
+		menu.setSize(425,215);
 		menu.setLayout(null);
 		menu.setVisible(true); 
+		menu.setLocationRelativeTo(null); 
 		menu.setDefaultCloseOperation(menu.EXIT_ON_CLOSE);     
 	}  
 }
