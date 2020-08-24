@@ -52,22 +52,29 @@ public class Main {
 				JTextField phoneNumberText=new JTextField();
 				phoneNumberText.setBounds(125,130,290,30);
 				
+				//Label for the text field to enter the contacts email
+				JLabel emailLabel=new JLabel("Email:");
+				emailLabel.setBounds(10,165,200,30);
+				JTextField emailText=new JTextField();
+				emailText.setBounds(130,165,285,30);
+				
 				//Label for the text field to enter the contacts school or workplace
 				JLabel workSchoolLabel=new JLabel("Work or School:");
-				workSchoolLabel.setBounds(10,165,200,30);
+				workSchoolLabel.setBounds(10,200,200,30);
 				JTextField workSchoolText=new JTextField();
-				workSchoolText.setBounds(130,165,285,30);
+				workSchoolText.setBounds(130,200,285,30);
 				
 				// When user clicks submit all the information put in each text field 
 				// will be saved to the data structure storing contact information
 				JButton ACSubmit=new JButton("Submit");
-				ACSubmit.setBounds(10,200,200,30);
+				ACSubmit.setBounds(10,235,200,30);
 				ACSubmit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 					//Once the submit button is clicked it will save the info from each field to a string
 						String First_Name=firstNameText.getText();
 						String Last_Name=lastNameText.getText();
 						String Phone_Num=phoneNumberText.getText();
+						String Email=emailText.getText();
 						String Work_School=workSchoolText.getText();
 						/*
 							Add Contact Function goes here
@@ -80,7 +87,7 @@ public class Main {
 				
 				//If user clicks the cancel button it will close this window and just show the main menu
 				JButton ACCancel=new JButton("Cancel");
-				ACCancel.setBounds(215,200,200,30);
+				ACCancel.setBounds(215,235,200,30);
 				ACCancel.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						addcontactmenu.dispose();
@@ -94,6 +101,8 @@ public class Main {
 				addcontactmenu.add(lastNameText);
 				addcontactmenu.add(phoneNumberLabel);
 				addcontactmenu.add(phoneNumberText);
+				addcontactmenu.add(emailLabel);
+				addcontactmenu.add(emailText);
 				addcontactmenu.add(workSchoolLabel);
 				addcontactmenu.add(workSchoolText);
 				addcontactmenu.add(ACSubmit);
@@ -134,14 +143,21 @@ public class Main {
 				JTextField phoneNumberText=new JTextField();
 				phoneNumberText.setBounds(125,130,290,30);
 				
+				//Label for the text field for the email address
+				JLabel emailLabel=new JLabel("Email:");
+				emailLabel.setBounds(10,165,200,30);
+				JTextField emailText=new JTextField();
+				emailText.setBounds(130,165,285,30);
+				
 				//Label for the text field to enter the contacts school or workplace
 				JLabel workSchoolLabel=new JLabel("Work or School:");
-				workSchoolLabel.setBounds(10,165,200,30);
+				workSchoolLabel.setBounds(10,200,200,30);
 				JTextField workSchoolText=new JTextField();
-				workSchoolText.setBounds(130,165,285,30);
+				workSchoolText.setBounds(130,200,285,30);
+				
 				//Submit button to process delete action
 				JButton Submit=new JButton("Submit");
-				Submit.setBounds(10,200,200,30);
+				Submit.setBounds(10,235,200,30);
 				Submit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						//Once the submit button is clicked it will save the info from each field to a string
@@ -161,7 +177,7 @@ public class Main {
 				
 				//Cancel just in case user changes mind
 				JButton Cancel=new JButton("Cancel");
-				Cancel.setBounds(215,200,200,30);
+				Cancel.setBounds(215,235,200,30);
 				Cancel.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						menu.setVisible(true);
@@ -177,6 +193,8 @@ public class Main {
 				deletecontactmenu.add(lastNameText);
 				deletecontactmenu.add(phoneNumberLabel);
 				deletecontactmenu.add(phoneNumberText);
+				deletecontactmenu.add(emailLabel);
+				deletecontactmenu.add(emailText);
 				deletecontactmenu.add(workSchoolLabel);
 				deletecontactmenu.add(workSchoolText);
 				deletecontactmenu.add(Submit);
