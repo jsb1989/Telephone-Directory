@@ -11,11 +11,11 @@ public class Database{
     Node next;
         //Constructor of a Doubly Linked List Node
         Node(String F,String L,String P,String E,String W){ 
-          FirstName=F; 
-          LastName=L;
-          PhoneNumber=P;
-          Email=E;
-          WorkSchool=W;
+          this.FirstName=F; 
+          this.LastName=L;
+          this.PhoneNumber=P;
+          this.Email=E;
+          this.WorkSchool=W;
         } 
     } 
 }
