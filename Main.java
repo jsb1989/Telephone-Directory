@@ -1,10 +1,12 @@
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +19,10 @@ public class Main {
 		/*
 			Creation of Data structure to store contacts goes here
 		*/
+		
+		JLabel Title=new JLabel("PHONE DIRECTORY");
+		Title.setBounds(130,10,350,30);
+		Title.setFont(new Font("Serif", Font.ITALIC, 18));
 		
 		//Adds contact to directory   
 		JButton AddContact=new JButton("Add Contact");  
@@ -246,20 +252,34 @@ public class Main {
 				Submit.setBounds(10,190,200,30);
 				Submit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
+						int search=0;
+						//Based on the users selection a message will pop up asking for the using to input what to search for
 						if(FirstName.isSelected()){
+							search=0;
+							String toSearch=JOptionPane.showInputDialog("What first name would you like to search?");
 						}
 						if(LastName.isSelected()){
+							search=1;
+							String toSearch=JOptionPane.showInputDialog("What last name would you like to search?");
 						}
 						if(PhoneNumber.isSelected()){
+							search=2;
+							String toSearch=JOptionPane.showInputDialog("What phone number would you like to search?");
 						}
 						if(Email.isSelected()){
+							search=3;
+							String toSearch=JOptionPane.showInputDialog("What email would you like to search?");
 						}
 						if(WorkSchool.isSelected()){
+							search=4;
+							String toSearch=JOptionPane.showInputDialog("What school or workplace would you like to search?");
 						}
 						/*
 							Depending on the selected information it will search the
-							the data strut by passing the information to
-							the search function
+							the data strut by passing int the fucntion the search int 
+							which will signify which option was selected and the String 
+							for what the user is searching for.
+						
 						*/
 						
 						chooseContact.dispose();
@@ -344,15 +364,21 @@ public class Main {
 				Submit.setBounds(10,190,200,30);
 				Submit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
+						int sort=0;
 						if(FirstName.isSelected()){
+							sort=0;
 						}
 						if(LastName.isSelected()){
+							sort=1;
 						}
 						if(PhoneNumber.isSelected()){
+							sort=2;
 						}
 						if(Email.isSelected()){
+							sort=3;
 						}
 						if(WorkSchool.isSelected()){
+							sort=4;
 						}
 						/*
 							Depending on the selected information it will sort the data structure
@@ -384,12 +410,13 @@ public class Main {
 			}
 		});
 		
+		menu.add(Title);
 		menu.add(AddContact);  
 		menu.add(DeleteContact);
 		menu.add(SearchContact);
 		menu.add(PossibleContact);
 		menu.add(DisplayContact);
-		menu.setSize(450,600);  
+		menu.setSize(425,215);  
 		menu.setLayout(null);
 		menu.setVisible(true); 
 		menu.setDefaultCloseOperation(menu.EXIT_ON_CLOSE);     
