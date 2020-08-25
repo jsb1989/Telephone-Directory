@@ -3,24 +3,98 @@ public class Database{
 	  
 	  //Contents of a Doubly Linked List Node
 	  class Node { 
-		  String FirstName; 
-		  String LastName;
-		  String PhoneNumber;
-		  String Email;
-		  String WorkSchool;
+		  Object FirstName; 
+		  Object LastName;
+		  Object PhoneNumber;
+		  Object Email;
+		  Object WorkSchool;
+		  Object data;
 		  Node prev;
 		  Node next;
 	      //Constructor of a Doubly Linked List Node
 	      
-		  Node(String F,String L,String P,String E,String W){ 
+		  Node(Object F, Object L, Object P, Object E, Object W){ 
 			  this.FirstName=F; 
 	          this.LastName=L;
 	          this.PhoneNumber=P;
 	          this.Email=E;
 	          this.WorkSchool=W;
-	        } 
+	      } 
+		  
+		  /**
+			 * Check data and next.
+			 * 
+			 * @param data
+			 */
+			
+		  Node(Object data) {
+				
+				this.data = data;
+				this.next = null;
+				
+		  }
 		  
 	    } 
+	  
+	  class Display {
+		  /**
+			 * Display all data within a linked list.
+			 * 
+			 * While not an empty linked list, print element in linked list one by one
+			 * 
+			 */
+			
+			public void displayData() {
+				
+				Node current = head;	// temporary node to point head
+				
+				while(current != null) {// while not an empty list
+					
+					System.out.print(current.data + "\t\t"); // print data
+					current = current.next;
+					
+				}
+				
+				System.out.println("");
+				
+			}
+		  
+	  }
+	  
+	  class Searching {
+		  /**
+			 * Insert new node into linked list.
+			 * Position will be at the end of the linked list.
+			 * 
+			 * If the linked list is empty, then set the first element of the linked list to be the new element.
+			 * Otherwise point the node to the new element.
+			 * Creating a linked list.
+			 * 
+			 * @param data
+			 */
+			
+			public void insert(Object data) {
+				
+				if(head == null) {			// when head equal to null
+					
+					head = new Node(data); 	// head equal to new node
+					return;
+					
+				}
+				
+				Node current = head;
+				
+				while(current.next != null) {// while head doesn't equal to null
+					
+					current = current.next;  // linked list point to the new node
+					
+				}
+				
+				current.next = new Node(data);
+				
+			}
+		  
+	  }
 	  
 	  class Deletion {
 			
@@ -35,6 +109,60 @@ public class Database{
 				deletePhoneNumber(phoneNumber);
 				deleteWorkSchool(place);
 				deleteEmail(email);
+				
+			}
+			
+			/**
+			 * Delete node at a given position.
+			 * 
+			 * Check if it's an empty linked list.
+			 * Check if there's only one element within the linked list.
+			 * If so then just delete the whole linked list.
+			 * 
+			 * Special condition when user wants to delete the first element of the linked list.
+			 * Set the first element as the second element within the linked list.
+			 * Automatically delete set the first element to null.
+			 * 
+			 * Normal case count to the position then delete the element at the position.
+			 * 
+			 * @param position
+			 */
+			
+			public void deleteAt(int position) {		
+				int count = 1; 			
+				Node previous = head;	// temporary node to point head
+				
+				if(head == null) { 		// check to see if it's an empty list
+					
+					return;
+					
+				}
+				
+				if(countProduct() == 1) {// check to see if there's only one element in the list	
+
+					head = null;
+					return;
+					
+				}
+				
+				if(position == 1) {		// condition when user wants to delete the first element in the list
+					
+					head = previous.next;
+					return;
+					
+				}
+				
+
+				while(count < position-1) {// delete element at the given position
+					
+					previous = previous.next;
+					count++;
+					
+				}
+				
+				Node current = previous.next;
+				previous.next = current.next;
+				current.next = null;
 				
 			}
 			
@@ -224,60 +352,6 @@ public class Database{
 			}
 			
 			/**
-			 * Delete node at a given position.
-			 * 
-			 * Check if it's an empty linked list.
-			 * Check if there's only one element within the linked list.
-			 * If so then just delete the whole linked list.
-			 * 
-			 * Special condition when user wants to delete the first element of the linked list.
-			 * Set the first element as the second element within the linked list.
-			 * Automatically delete set the first element to null.
-			 * 
-			 * Normal case count to the position then delete the element at the position.
-			 * 
-			 * @param position
-			 */
-			
-			public void deleteAt(int position) {		
-				int count = 1; 			
-				Node previous = head;	// temporary node to point head
-				
-				if(head == null) { 		// check to see if it's an empty list
-					
-					return;
-					
-				}
-				
-				if(countProduct() == 1) {// check to see if there's only one element in the list	
-
-					head = null;
-					return;
-					
-				}
-				
-				if(position == 1) {		// condition when user wants to delete the first element in the list
-					
-					head = previous.next;
-					return;
-					
-				}
-				
-
-				while(count < position-1) {// delete element at the given position
-					
-					previous = previous.next;
-					count++;
-					
-				}
-				
-				Node current = previous.next;
-				previous.next = current.next;
-				current.next = null;
-				
-			}
-			
-			/**
 			 * Count the total of element within the linked list.
 			 * 
 			 * When linked list is not empty, run the linked list.
@@ -321,10 +395,4 @@ public class Database{
 			
 		}
 
-
-		
 }
-
-
-
-
