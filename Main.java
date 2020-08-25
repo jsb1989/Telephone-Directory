@@ -3,8 +3,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import java.awt.FlowLayout;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JTextArea;  
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,9 +19,7 @@ public class Main {
 		JFrame menu=new JFrame("Phone Directory");
 		menu.setVisible(true); 
 		
-		/*
-			Creation of Data structure to store contacts goes here
-		*/
+		Database database=new Database();
 		
 		JLabel Title=new JLabel("PHONE DIRECTORY");
 		Title.setBounds(130,10,350,30);
@@ -248,6 +249,7 @@ public class Main {
 					group.add(FirstName);
 					group.add(LastName);
 					group.add(PhoneNumber);
+					group.add(Email);
 					group.add(WorkSchool);
 					
 				//Submit button to process search choice
@@ -361,6 +363,7 @@ public class Main {
 					group.add(FirstName);
 					group.add(LastName);
 					group.add(PhoneNumber);
+					group.add(Email);
 					group.add(WorkSchool);
 					
 				//Submit button to process sorting choice
@@ -388,8 +391,36 @@ public class Main {
 							Depending on the selected information it will sort the data structure
 							then display the contents based on that.
 						*/
-						
-						displayChoice.dispose();
+						JFrame displaySorted = new JFrame("Sorted Display");
+						displaySorted.setSize(600,425);
+						displaySorted.setLayout(null);
+						displaySorted.setVisible(true);
+						displaySorted.setLocationRelativeTo(null);
+						displaySorted.setDefaultCloseOperation(displayChoice.DISPOSE_ON_CLOSE);
+						JLabel TitleDisplay=new JLabel("Sorted Contacts");
+						TitleDisplay.setBounds(100,2,250,30);
+						displaySorted.getContentPane().setLayout(new FlowLayout());    
+        					JTextArea textArea = new JTextArea(20, 50);  
+        					textArea.setEditable(false);
+        					textArea.append("text");
+        					JScrollPane scrollableTextArea = new JScrollPane(textArea);  
+  
+        					scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
+        					scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+						/*
+							This is where the double linkedlist will be displayed in the textArea of the scrollable panel
+						*/
+        					JButton Finish=new JButton("FINISHED");
+						Finish.setBounds(100,380,200,30);
+						Finish.addActionListener(new ActionListener(){
+							public void actionPerformed(ActionEvent e){
+								displayChoice.dispose();
+								displaySorted.dispose();
+							}
+						});  
+						displaySorted.add(TitleDisplay);
+						displaySorted.getContentPane().add(scrollableTextArea);
+						displaySorted.add(Finish);
 					}
 				});
 				
