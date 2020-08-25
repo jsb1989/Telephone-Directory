@@ -85,11 +85,7 @@ public class Main {
 						String Phone_Num=phoneNumberText.getText();
 						String Email=emailText.getText();
 						String Work_School=workSchoolText.getText();
-						/*
-							Add Contact Function goes here
-							This will take the string from each text field and pass it into the function
-							which will add the information to the data structure
-						*/
+						database.addContact(First_Name,Last_Name,Phone_Num,Email,Work_School);
 						addcontactmenu.dispose();
 					}
 				});
@@ -125,14 +121,14 @@ public class Main {
 		DeleteContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				JFrame deletecontactmenu=new JFrame("Delete Contact");
-				deletecontactmenu.setSize(450,600);  
+				deletecontactmenu.setSize(450,300);  
 				deletecontactmenu.setLayout(null);
 				deletecontactmenu.setVisible(true);
 				deletecontactmenu.setLocationRelativeTo(null);
 				deletecontactmenu.setDefaultCloseOperation(deletecontactmenu.DISPOSE_ON_CLOSE);
 				
 				//Just shows the instruction at the top of the window
-				JLabel ACMTitleLabel=new JLabel("Input information for the contact that will be deleted");
+				JLabel ACMTitleLabel=new JLabel("<HTML>Input the First & Last Name and Phone Number<BR> for the contact that will be deleted<HTML>");
 				ACMTitleLabel.setBounds(20,10,400,30); 
 				
 				//Label for the text field to enter the contacts first name
@@ -153,18 +149,6 @@ public class Main {
 				JTextField phoneNumberText=new JTextField();
 				phoneNumberText.setBounds(125,130,290,30);
 				
-				//Label for the text field for the email address
-				JLabel emailLabel=new JLabel("Email:");
-				emailLabel.setBounds(10,165,200,30);
-				JTextField emailText=new JTextField();
-				emailText.setBounds(130,165,285,30);
-				
-				//Label for the text field to enter the contacts school or workplace
-				JLabel workSchoolLabel=new JLabel("Work or School:");
-				workSchoolLabel.setBounds(10,200,200,30);
-				JTextField workSchoolText=new JTextField();
-				workSchoolText.setBounds(130,200,285,30);
-				
 				//Submit button to process delete action
 				JButton Submit=new JButton("Submit");
 				Submit.setBounds(10,235,200,30);
@@ -174,12 +158,7 @@ public class Main {
 						String First_Name=firstNameText.getText();
 						String Last_Name=lastNameText.getText();
 						String Phone_Num=phoneNumberText.getText();
-						String Work_School=workSchoolText.getText();
-						/*
-							Depending on the selected information it will delete the
-							corresponding contact by passing the information to
-							the delete function
-						*/
+						database.delete(First_Name,Last_Name,Phone_Num);
 						menu.setVisible(true);
 						deletecontactmenu.dispose();
 					}
@@ -203,10 +182,6 @@ public class Main {
 				deletecontactmenu.add(lastNameText);
 				deletecontactmenu.add(phoneNumberLabel);
 				deletecontactmenu.add(phoneNumberText);
-				deletecontactmenu.add(emailLabel);
-				deletecontactmenu.add(emailText);
-				deletecontactmenu.add(workSchoolLabel);
-				deletecontactmenu.add(workSchoolText);
 				deletecontactmenu.add(Submit);
 				deletecontactmenu.add(Cancel);
 			}
@@ -258,26 +233,60 @@ public class Main {
 				Submit.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						int search=0;
+						String toSearch= " ";
+						//Temp database that saves the searched content
+						Database searchDatabase = new Database();
+
 						//Based on the users selection a message will pop up asking for the using to input what to search for
 						if(FirstName.isSelected()){
 							search=0;
-							String toSearch=JOptionPane.showInputDialog("What first name would you like to search?");
+							toSearch=JOptionPane.showInputDialog("What first name would you like to search?");
+							for(int i=0; i<database.size(); i++){
+								if((database.getFirstName(i)).equals(toSearch)){
+									searchDatabase.addContact(database.getFirstName(i),database.getLastName(i),database.getPhoneNumber(i),database.getEmail(i),database.getWorkSchool(i));
+								}
+							}
+							searchDatabase.sortDatabase(1);
 						}
 						if(LastName.isSelected()){
 							search=1;
-							String toSearch=JOptionPane.showInputDialog("What last name would you like to search?");
+							toSearch=JOptionPane.showInputDialog("What last name would you like to search?");
+							for(int i=0; i<database.size(); i++){
+								if((database.getLastName(i)).equals(toSearch)){
+									searchDatabase.addContact(database.getFirstName(i),database.getLastName(i),database.getPhoneNumber(i),database.getEmail(i),database.getWorkSchool(i));
+								}
+							}
+							searchDatabase.sortDatabase(0);
 						}
 						if(PhoneNumber.isSelected()){
 							search=2;
-							String toSearch=JOptionPane.showInputDialog("What phone number would you like to search?");
+							toSearch=JOptionPane.showInputDialog("What phone number would you like to search?");
+							for(int i=0; i<database.size(); i++){
+								if((database.getPhoneNumber(i)).equals(toSearch)){
+									searchDatabase.addContact(database.getFirstName(i),database.getLastName(i),database.getPhoneNumber(i),database.getEmail(i),database.getWorkSchool(i));
+								}
+							}
+							searchDatabase.sortDatabase(1);
 						}
 						if(Email.isSelected()){
 							search=3;
-							String toSearch=JOptionPane.showInputDialog("What email would you like to search?");
+							toSearch=JOptionPane.showInputDialog("What email would you like to search?");
+							for(int i=0; i<database.size(); i++){
+								if((database.getEmail(i)).equals(toSearch)){
+									searchDatabase.addContact(database.getFirstName(i),database.getLastName(i),database.getPhoneNumber(i),database.getEmail(i),database.getWorkSchool(i));
+								}
+							}
+							searchDatabase.sortDatabase(1);
 						}
 						if(WorkSchool.isSelected()){
 							search=4;
-							String toSearch=JOptionPane.showInputDialog("What school or workplace would you like to search?");
+							toSearch=JOptionPane.showInputDialog("What school or workplace would you like to search?");
+							for(int i=0; i<database.size(); i++){
+								if((database.getWorkSchool(i)).equals(toSearch)){
+									searchDatabase.addContact(database.getFirstName(i),database.getLastName(i),database.getPhoneNumber(i),database.getEmail(i),database.getWorkSchool(i));
+								}
+							}
+							searchDatabase.sortDatabase(1);
 						}
 						
 						JFrame displaySorted = new JFrame("Matching Contacts");
@@ -286,24 +295,27 @@ public class Main {
 						displaySorted.setVisible(true);
 						displaySorted.setLocationRelativeTo(null);
 						displaySorted.setDefaultCloseOperation(chooseContact.DISPOSE_ON_CLOSE);
+
 						JLabel TitleDisplay=new JLabel("Matching Contacts");
 						TitleDisplay.setBounds(100,2,250,30);
 						displaySorted.getContentPane().setLayout(new FlowLayout());    
         					JTextArea textArea = new JTextArea(20, 50);  
         					textArea.setEditable(false);
-        					textArea.append("text");
         					JScrollPane scrollableTextArea = new JScrollPane(textArea);  
-  
         					scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
-        					scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
-						/*
-							This is where the double linkedlist will be display the matching results
-							in the textArea of the scrollable panel
-						*/
+        					scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+  						//This will add all of the database to the textArea to display it to the user
+						for(int i=0; i<searchDatabase.size(); i++){  
+        						textArea.append(searchDatabase.getFirstName(i)+" "+searchDatabase.getLastName(i)+"      "+searchDatabase.getPhoneNumber(i)+"        "+searchDatabase.getEmail(i)+"         "+searchDatabase.getWorkSchool(i)+"\n");
+						}
+
+						//Button for user to press when they are finished looking at the contacts
         					JButton Finish=new JButton("FINISHED");
 						Finish.setBounds(100,380,200,30);
 						Finish.addActionListener(new ActionListener(){
 							public void actionPerformed(ActionEvent e){
+								searchDatabase.deleteAll();
 								displaySorted.dispose();
 								chooseContact.dispose();
 							}
@@ -311,13 +323,6 @@ public class Main {
 						displaySorted.add(TitleDisplay);
 						displaySorted.getContentPane().add(scrollableTextArea);
 						displaySorted.add(Finish);
-						/*
-							Depending on the selected information it will search the
-							the data struct by passing int the fucntion the search int 
-							which will signify which option was selected and the String 
-							for what the user is searching for.
-						
-						*/
 					}
 				});
 				
@@ -346,13 +351,7 @@ public class Main {
 		PossibleContact.setBounds(215,95,200,30);
 		PossibleContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				/*
-					When this button is selected it will
-					show potential contacts the user may know
-					based on work place or school
-					This will open a new window up displaying the information
-				*/
-				System.out.printf("Poss\n");
+				JOptionPane.showMessageDialog(menu,"FUNCTION NOT YET AVAILABLE");
 			}
 		});
 		
@@ -417,10 +416,8 @@ public class Main {
 						if(WorkSchool.isSelected()){
 							sort=4;
 						}
-						/*
-							Depending on the selected information it will sort the data structure
-							then display the contents based on that.
-						*/
+						database.sortDatabase(sort);
+
 						JFrame displaySorted = new JFrame("Sorted Display");
 						displaySorted.setSize(600,425);
 						displaySorted.setLayout(null);
@@ -432,14 +429,17 @@ public class Main {
 						displaySorted.getContentPane().setLayout(new FlowLayout());    
         					JTextArea textArea = new JTextArea(20, 50);  
         					textArea.setEditable(false);
-        					textArea.append("text");
+
+						//This will add all of the database to the textArea to display it to the user
+        					for(int i=0; i<database.size(); i++){  
+        						textArea.append(database.getFirstName(i)+" "+database.getLastName(i)+"      "+database.getPhoneNumber(i)+"        "+database.getEmail(i)+"         "+database.getWorkSchool(i)+"\n");
+						}
+
         					JScrollPane scrollableTextArea = new JScrollPane(textArea);  
-  
         					scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
         					scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
-						/*
-							This is where the double linkedlist will be displayed in the textArea of the scrollable panel
-						*/
+
+						//Button for user to press when they are finished looking at the contacts
         					JButton Finish=new JButton("FINISHED");
 						Finish.setBounds(100,380,200,30);
 						Finish.addActionListener(new ActionListener(){
