@@ -3,396 +3,311 @@ public class Database{
 	  
 	  //Contents of a Doubly Linked List Node
 	  class Node { 
-		  Object FirstName; 
-		  Object LastName;
-		  Object PhoneNumber;
-		  Object Email;
-		  Object WorkSchool;
-		  Object data;
+		  String FirstName; 
+		  String LastName;
+		  String PhoneNumber;
+		  String Email;
+		  String WorkSchool;
+		  String data;
 		  Node prev;
 		  Node next;
 	      //Constructor of a Doubly Linked List Node
 	      
-		  Node(Object F, Object L, Object P, Object E, Object W){ 
+		  Node(String F, String L, String P, String E, String W){ 
 			  this.FirstName=F; 
-	          this.LastName=L;
-	          this.PhoneNumber=P;
-	          this.Email=E;
-	          this.WorkSchool=W;
-	      } 
-		  
-		  /**
-			 * Check data and next.
-			 * 
-			 * @param data
-			 */
-			
-		  Node(Object data) {
-				
-				this.data = data;
-				this.next = null;
-				
-		  }
-		  
-	    } 
-	  
-	  class Display {
-		  /**
-			 * Display all data within a linked list.
-			 * 
-			 * While not an empty linked list, print element in linked list one by one
-			 * 
-			 */
-			
-			public void displayData() {
-				
-				Node current = head;	// temporary node to point head
-				
-				while(current != null) {// while not an empty list
-					
-					System.out.print(current.data + "\t\t"); // print data
-					current = current.next;
-					
-				}
-				
-				System.out.println("");
-				
-			}
-		  
-	  }
-	  
-	  class Searching {
-		  /**
-			 * Insert new node into linked list.
-			 * Position will be at the end of the linked list.
-			 * 
-			 * If the linked list is empty, then set the first element of the linked list to be the new element.
-			 * Otherwise point the node to the new element.
-			 * Creating a linked list.
-			 * 
-			 * @param data
-			 */
-			
-			public void insert(Object data) {
-				
-				if(head == null) {			// when head equal to null
-					
-					head = new Node(data); 	// head equal to new node
-					return;
-					
-				}
-				
-				Node current = head;
-				
-				while(current.next != null) {// while head doesn't equal to null
-					
-					current = current.next;  // linked list point to the new node
-					
-				}
-				
-				current.next = new Node(data);
-				
-			}
-		  
-	  }
-	  
-	  class Deletion {
-			
-			public Deletion(){
-				//empty
-				
-			}
-			
-			public Deletion(Object firstName, Object lastName, Object phoneNumber, Object place, Object email) {
-				deleteFirstName(firstName);
-				deleteLastName(lastName, position(firstName)); // delete last name base on the position of first name
-				deletePhoneNumber(phoneNumber);
-				deleteWorkSchool(place);
-				deleteEmail(email);
-				
-			}
-			
-			/**
-			 * Delete node at a given position.
-			 * 
-			 * Check if it's an empty linked list.
-			 * Check if there's only one element within the linked list.
-			 * If so then just delete the whole linked list.
-			 * 
-			 * Special condition when user wants to delete the first element of the linked list.
-			 * Set the first element as the second element within the linked list.
-			 * Automatically delete set the first element to null.
-			 * 
-			 * Normal case count to the position then delete the element at the position.
-			 * 
-			 * @param position
-			 */
-			
-			public void deleteAt(int position) {		
-				int count = 1; 			
-				Node previous = head;	// temporary node to point head
-				
-				if(head == null) { 		// check to see if it's an empty list
-					
-					return;
-					
-				}
-				
-				if(countProduct() == 1) {// check to see if there's only one element in the list	
+	          	this.LastName=L;
+	          	this.PhoneNumber=P;
+	          	this.Email=E;
+	          	this.WorkSchool=W;
+		} 
+	}
 
-					head = null;
-					return;
-					
-				}
-				
-				if(position == 1) {		// condition when user wants to delete the first element in the list
-					
-					head = previous.next;
-					return;
-					
-				}
-				
-
-				while(count < position-1) {// delete element at the given position
-					
-					previous = previous.next;
-					count++;
-					
-				}
-				
-				Node current = previous.next;
-				previous.next = current.next;
-				current.next = null;
-				
-			}
-			
-			// Delete first name within the linked list
-			public void deleteFirstName(Object firstName) {
-				int count = 1; 		
-				Node previous = head;	// temporary node to point head
-				
-				if(head == null) { 		// check to see if it's an empty list
-					return;
-					
-				}
-				
-				if(countProduct() == 1 && head == firstName) {// check to see if there's only one element in the list	
-
-					head = null;
-					return;
-					
-				}
-				
-				if(position(firstName) == 1) {		// condition when user wants to delete the first element in the list
-					
-					head = previous.next;
-					return;
-					
-				}
-				
-				while(count < position(firstName)-1) {// delete element at the given position
-					
-					previous = previous.next;
-					count++;
-					
-				}
-				
-				Node current = previous.next;
-				previous.next = current.next;
-				current.next = null;
-				
-			}
-			
-			// Delete last name within the linked list
-			public void deleteLastName(Object lastName, int position) {
-				int count = 1; 	
-				Node previous = head;	// temporary node to point head
-				
-				if(head == null) { 		// check to see if it's an empty list
-					return;
-					
-				}
-				
-				if(countProduct() == 1 && head == lastName) {// check to see if there's only one element in the list	
-
-					head = null;
-					return;
-					
-				}
-				
-				if(position == 1) {		// condition when user wants to delete the first element in the list
-					
-					head = previous.next;
-					return;
-					
-				}
-				
-				while(count < position -1) {// delete element at the given position
-					
-					previous = previous.next;
-					count++;
-					
-				}
-				
-				Node current = previous.next;
-				previous.next = current.next;
-				current.next = null;
-				
-			}
-			
-			// Delete phone number within the linked list
-			public void deletePhoneNumber(Object phoneNumber) {
-				int count = 1; 	
-				Node previous = head;	// temporary node to point head
-				
-				if(head == null) { 		// check to see if it's an empty list
-					return;
-					
-				}
-				
-				if(countProduct() == 1 && head == phoneNumber) {// check to see if there's only one element in the list	
-
-					head = null;
-					return;
-					
-				}
-				
-				if(position(phoneNumber) == 1) {		// condition when user wants to delete the first element in the list
-					
-					head = previous.next;
-					return;
-					
-				}
-				
-				while(count < position(phoneNumber)-1) {// delete element at the given position
-					
-					previous = previous.next;
-					count++;
-					
-				}
-				
-				Node current = previous.next;
-				previous.next = current.next;
-				current.next = null;
-				
-			}
-			
-			// Delete work place or school within the linked list
-			public void deleteWorkSchool(Object place) {
-				int count = 1; 	
-				Node previous = head;	// temporary node to point head
-				
-				if(head == null) { 		// check to see if it's an empty list
-					return;
-					
-				}
-				
-				if(countProduct() == 1 && head == place) {// check to see if there's only one element in the list	
-
-					head = null;
-					return;
-					
-				}
-				
-				if(position(place) == 1) {		// condition when user wants to delete the first element in the list
-					
-					head = previous.next;
-					return;
-					
-				}	
-				
-				while(count < position(place)-1) {// delete element at the given position
-					
-					previous = previous.next;
-					count++;
-					
-				}
-				
-				Node current = previous.next;
-				previous.next = current.next;
-				current.next = null;
-				
-			}
-			
-			// Delete email within the linked list
-			public void deleteEmail(Object email) {
-				int count = 1; 	
-				Node previous = head;	// temporary node to point head
-				
-				if(head == null) { 		// check to see if it's an empty list
-					return;
-					
-				}
-				
-				if(countProduct() == 1 && head == email) {// check to see if there's only one element in the list	
-
-					head = null;
-					return;
-					
-				}
-				
-				if(position(email) == 1) {		// condition when user wants to delete the first element in the list
-					
-					head = previous.next;
-					return;
-					
-				}
-				
-				while(count < position(email)-1) {// delete element at the given position
-					
-					previous = previous.next;
-					count++;
-					
-				}
-				
-				Node current = previous.next;
-				previous.next = current.next;
-				current.next = null;
-				
-			}
-			
-			/**
-			 * Count the total of element within the linked list.
-			 * 
-			 * When linked list is not empty, run the linked list.
-			 * Then start counting the element.
-			 * 
-			 * @return count
-			 */
-			
-			public int countProduct() {
-				
-				int count = 0;
-				Node current = head;	// temporary node to point head
-				
-				while(current != null) {// while not an empty list
-					
-					count++;
-					current = current.next; // count the element
-					
-				}
-				
-				return count;
-				
-			}
-			
-			public int position(Object element) {
-				
-				int position = 0;
-				Node current = head;	// temporary node to point head
-				
-				while(current != element) {// while not an empty list
-					
-					position++;
-					current = current.next; // count the element
-					
-				}
-				position++;
-				
-				return position;
-				
-			}
-			
+	//Adds contact info to the database
+	public void addContact(String F, String L, String P, String E, String W){
+		Node newNode= new Node(F,L,P,E,W);
+		newNode.next=head;
+		head=newNode;
+	}
+	
+	//Returns size of the linked list
+	public int size(){
+		Node current=head;
+		int count=0;
+		while(current!=null){
+			count++;
+			current=current.next;
 		}
+		return count;
+	}
 
+	//Returns the First Name of a database entry
+	public String getFirstName(int index){
+		Node current=head;
+		int count=0;
+		while(current!=null){
+			if(count==index){
+				return current.FirstName;
+			}
+			count++;
+			current=current.next;
+		}
+		return "No Contacts";
+	}
+
+	//Returns the Last Name of a database entry
+	public String getLastName(int index){
+		Node current=head;
+		int count=0;
+		while(current!=null){
+			if(count==index){
+				return current.LastName;
+			}
+			count++;
+			current=current.next;
+		}
+		return "                      ";
+	}
+
+	//Returns the Phone number of a database entry
+	public String getPhoneNumber(int index){
+		Node current=head;
+		int count=0;
+		while(current!=null){
+			if(count==index){
+				return current.PhoneNumber;
+			}
+			count++;
+			current=current.next;
+		}
+		return "                      ";
+	}
+
+	//Returns the Email of a database entry
+	public String getEmail(int index){
+		Node current=head;
+		int count=0;
+		while(current!=null){
+			if(count==index){
+				return current.Email;
+			}
+			count++;
+			current=current.next;
+		}
+		return "                      ";
+	}
+
+	//Returns the Work or School of a database entry
+	public String getWorkSchool(int index){
+		Node current=head;
+		int count=0;
+		while(current!=null){
+			if(count==index){
+				return current.WorkSchool;
+			}
+			count++;
+			current=current.next;
+		}
+		return "                      ";
+	}
+
+	//Method that will sort the database based on the users choice
+	public void sortDatabase(int Choice){
+		switch(Choice){
+			case 0:
+				Node current=null;
+				Node index=null;
+				String temp=" ";
+				if(head==null){
+					return;
+				}else{
+					for(current=head; current.next!=null;current=current.next){
+						for(index=current.next; index!=null; index=index.next){
+							if(((current.FirstName).compareTo(index.FirstName))>0){
+								temp=current.FirstName;
+								current.FirstName=index.FirstName;
+								index.FirstName=temp;
+								
+								temp=current.LastName;
+								current.LastName=index.LastName;
+								index.LastName=temp;
+
+								temp=current.PhoneNumber;
+								current.PhoneNumber=index.PhoneNumber;
+								index.PhoneNumber=temp;
+	
+								temp=current.Email;
+								current.Email=index.Email;
+								index.Email=temp;
+
+								temp=current.WorkSchool;
+								current.WorkSchool=index.WorkSchool;
+								index.WorkSchool=temp;
+							}
+						}
+					}
+				}	
+				break;
+			case 1:
+				current=null;
+				index=null;
+				temp=" ";
+				if(head==null){
+					return;
+				}else{
+					for(current=head; current.next!=null;current=current.next){
+						for(index=current.next; index!=null; index=index.next){
+							if(((current.LastName).compareTo(index.LastName))>0){
+								temp=current.FirstName;
+								current.FirstName=index.FirstName;
+								index.FirstName=temp;
+								
+								temp=current.LastName;
+								current.LastName=index.LastName;
+								index.LastName=temp;
+
+								temp=current.PhoneNumber;
+								current.PhoneNumber=index.PhoneNumber;
+								index.PhoneNumber=temp;
+	
+								temp=current.Email;
+								current.Email=index.Email;
+								index.Email=temp;
+
+								temp=current.WorkSchool;
+								current.WorkSchool=index.WorkSchool;
+								index.WorkSchool=temp;
+							}
+						}
+					}
+				}
+				break;
+			case 2:
+				current=null;
+				index=null;
+				temp=" ";
+				if(head==null){
+					return;
+				}else{
+					for(current=head; current.next!=null;current=current.next){
+						for(index=current.next; index!=null; index=index.next){
+							if(((current.PhoneNumber).compareTo(index.PhoneNumber))>0){
+								temp=current.FirstName;
+								current.FirstName=index.FirstName;
+								index.FirstName=temp;
+								
+								temp=current.LastName;
+								current.LastName=index.LastName;
+								index.LastName=temp;
+
+								temp=current.PhoneNumber;
+								current.PhoneNumber=index.PhoneNumber;
+								index.PhoneNumber=temp;
+	
+								temp=current.Email;
+								current.Email=index.Email;
+								index.Email=temp;
+
+								temp=current.WorkSchool;
+								current.WorkSchool=index.WorkSchool;
+								index.WorkSchool=temp;
+							}
+						}
+					}
+				}
+				break;
+			case 3:
+				current=null;
+				index=null;
+				temp=" ";
+				if(head==null){
+					return;
+				}else{
+					for(current=head; current.next!=null;current=current.next){
+						for(index=current.next; index!=null; index=index.next){
+							if(((current.Email).compareTo(index.Email))>0){
+								temp=current.FirstName;
+								current.FirstName=index.FirstName;
+								index.FirstName=temp;
+								
+								temp=current.LastName;
+								current.LastName=index.LastName;
+								index.LastName=temp;
+
+								temp=current.PhoneNumber;
+								current.PhoneNumber=index.PhoneNumber;
+								index.PhoneNumber=temp;
+	
+								temp=current.Email;
+								current.Email=index.Email;
+								index.Email=temp;
+
+								temp=current.WorkSchool;
+								current.WorkSchool=index.WorkSchool;
+								index.WorkSchool=temp;
+							}
+						}
+					}
+				}
+				break;
+			case 4:
+				current=null;
+				index=null;
+				temp=" ";
+				if(head==null){
+					return;
+				}else{
+					for(current=head; current.next!=null;current=current.next){
+						for(index=current.next; index!=null; index=index.next){
+							if(((current.WorkSchool).compareTo(index.WorkSchool))>0){
+								temp=current.FirstName;
+								current.FirstName=index.FirstName;
+								index.FirstName=temp;
+								
+								temp=current.LastName;
+								current.LastName=index.LastName;
+								index.LastName=temp;
+
+								temp=current.PhoneNumber;
+								current.PhoneNumber=index.PhoneNumber;
+								index.PhoneNumber=temp;
+	
+								temp=current.Email;
+								current.Email=index.Email;
+								index.Email=temp;
+
+								temp=current.WorkSchool;
+								current.WorkSchool=index.WorkSchool;
+								index.WorkSchool=temp;
+							}
+						}
+					}
+				}
+				break;
+		}
+	}
+
+	//Method that deletes a database
+	public void deleteAll(){
+			head=null;
+	}
+
+	//Method that will delete a certain entry of the database
+	public void delete(String F, String L,String P){
+		Node current=head;
+		while(current!=null){
+			if(F.equals(current.FirstName)&&L.equals(current.LastName)&&P.equals(current.PhoneNumber)){
+				if(current==head){
+					head=current.next;
+				}
+				if(current.next!=null){
+					current.next.prev=current.prev;
+				}
+				if(current.prev!=null){
+					current.prev.next=current.next;
+				}
+			return;
+			}
+			current=current.next;
+		}
+	}
 }
