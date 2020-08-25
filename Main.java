@@ -279,15 +279,45 @@ public class Main {
 							search=4;
 							String toSearch=JOptionPane.showInputDialog("What school or workplace would you like to search?");
 						}
+						
+						JFrame displaySorted = new JFrame("Matching Contacts");
+						displaySorted.setSize(600,425);
+						displaySorted.setLayout(null);
+						displaySorted.setVisible(true);
+						displaySorted.setLocationRelativeTo(null);
+						displaySorted.setDefaultCloseOperation(chooseContact.DISPOSE_ON_CLOSE);
+						JLabel TitleDisplay=new JLabel("Matching Contacts");
+						TitleDisplay.setBounds(100,2,250,30);
+						displaySorted.getContentPane().setLayout(new FlowLayout());    
+        					JTextArea textArea = new JTextArea(20, 50);  
+        					textArea.setEditable(false);
+        					textArea.append("text");
+        					JScrollPane scrollableTextArea = new JScrollPane(textArea);  
+  
+        					scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
+        					scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+						/*
+							This is where the double linkedlist will be display the matching results
+							in the textArea of the scrollable panel
+						*/
+        					JButton Finish=new JButton("FINISHED");
+						Finish.setBounds(100,380,200,30);
+						Finish.addActionListener(new ActionListener(){
+							public void actionPerformed(ActionEvent e){
+								displaySorted.dispose();
+								chooseContact.dispose();
+							}
+						});  
+						displaySorted.add(TitleDisplay);
+						displaySorted.getContentPane().add(scrollableTextArea);
+						displaySorted.add(Finish);
 						/*
 							Depending on the selected information it will search the
-							the data strut by passing int the fucntion the search int 
+							the data struct by passing int the fucntion the search int 
 							which will signify which option was selected and the String 
 							for what the user is searching for.
 						
 						*/
-						
-						chooseContact.dispose();
 					}
 				});
 				
